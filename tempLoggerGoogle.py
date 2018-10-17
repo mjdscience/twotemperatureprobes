@@ -10,8 +10,10 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json',sc
 client = gspread.authorize(creds)
 sheet = client.open("").sheet1 #Name of sheet between the quotes (ie "2Temp")
 
-sensor1 = W1ThermSensor(W1ThermSensor.THERM_SENSOR_DS18B20, "") #First sensor - insert probe
-sensor2 = W1ThermSensor(W1ThermSensor.THERM_SENSOR_DS18B20, "") #Second sensor - insert probe
+#Sensors.  You need the serial numbers of the sensors from /sys/bus/w1/devices
+#The serial numbers are 28-xxxxxx.  Put the part after the 28- in the quotes in the lines below.
+sensor1 = W1ThermSensor(W1ThermSensor.THERM_SENSOR_DS18B20, "") #First sensor
+sensor2 = W1ThermSensor(W1ThermSensor.THERM_SENSOR_DS18B20, "") #Second sensor
 
 def elapse_time(): #counts time in seconds
   nowTime = datetime.datetime.now()
